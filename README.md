@@ -20,7 +20,7 @@ Siga as etapas abaixo para configurar e executar a aplicação:
 git clone https://github.com/gpontes98/deliverysystem-db.git
 ```
 
-2. Faça a build do db via docker:
+2. Faça a build do db via docker (é preciso estar na raiz do projeto): 
 ```
 docker build -t deliverysystem-db .
 ```
