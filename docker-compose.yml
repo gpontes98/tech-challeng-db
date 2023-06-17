@@ -1,0 +1,15 @@
+version: "3.5"
+services:
+  database:
+    image: deliverysystem-db
+    ports:
+      - "3306:3036"
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPassword
+      MYSQL_DATABASE: DeliverySystem
+      MYSQL_USER: MainUser
+      MYSQL_PASSWORD: MainPassword
+    volumes:
+      - db-volume:/var/lib/mysql
+volumes:
+  db-volume:
