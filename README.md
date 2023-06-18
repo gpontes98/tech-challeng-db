@@ -1,4 +1,4 @@
-# DeliverySystem DataBase
+# Delivery System DataBase
 
 Banco de dados em MySql para controle de pedidos e entrega de uma lanchonete.
 Link para acessar modelage do banco de dados:
@@ -18,7 +18,7 @@ Siga as etapas abaixo para configurar e executar a aplicação:
 1. Clone este repositório para a sua máquina local:
 
 ```
-git clone https://github.com/gpontes98/deliverysystem-db.git
+git clone https://github.com/gpontes98/tc-delivery-system-db.git
 ```
 
 2. Faça a build do db via docker (é preciso estar na raiz do projeto):
