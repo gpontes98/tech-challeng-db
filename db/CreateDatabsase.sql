@@ -19,7 +19,7 @@ CREATE TABLE orders (
 );
 
 -- Esta tabela armazena os tipos de itens disponíveis.
-CREATE TABLE itemTypeEnum (
+CREATE TABLE item_type_enum (
   id INT auto_increment PRIMARY KEY,
   type_name VARCHAR(100) NOT NULL
 );

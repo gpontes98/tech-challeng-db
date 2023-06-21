@@ -67,13 +67,7 @@ SELECT * FROM order_status;
 
 Para usar o docker compose é mais simples:
 
-1. Faça a build do db via docker (é preciso estar na raiz do projeto):
-
-```
-docker build -t deliverysystem-db .
-```
-
-2. Rode o comando do docker compose:
+1. Rode o comando docker compose:
 
 ```
 docker-compose up
