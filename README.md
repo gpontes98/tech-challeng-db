@@ -24,13 +24,13 @@ git clone https://github.com/gpontes98/tc-delivery-system-db.git
 2. Faça a build do db via docker (é preciso estar na raiz do projeto):
 
 ```
-docker build -t deliverysystem-db .
+docker build -t tech-challenge-db .
 ```
 
 3. Execute o container:
 
 ```
-docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=RootPassword -e MYSQL_DATABASE=DeliverySystem -e MYSQL_USER=MainUser -e MYSQL_PASSWORD=MainPassword deliverysystem-db
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=RootPassword -e MYSQL_DATABASE=DeliverySystem -e MYSQL_USER=MainUser -e MYSQL_PASSWORD=MainPassword tech-challenge-db
 ```
 
 4. Acesse o banco de forma manual:

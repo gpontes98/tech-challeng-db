@@ -8,10 +8,10 @@ INSERT INTO status_queue_enum (status_queue) VALUES ('Pronto');
 INSERT INTO status_queue_enum (status_queue) VALUES ('Finalizado');
 
 -- CADASTRANDO OS TIPOS DE ITENS - Bebida, Lanche, Acompanhamento, Sombremesa
-INSERT INTO itemTypeEnum (type_name) VALUES ('Bebida');
-INSERT INTO itemTypeEnum (type_name) VALUES ('Lanche');
-INSERT INTO itemTypeEnum (type_name) VALUES ('Acompanhamento');
-INSERT INTO itemTypeEnum (type_name) VALUES ('Sobremesa');
+INSERT INTO item_type_enum (type_name) VALUES ('Bebida');
+INSERT INTO item_type_enum (type_name) VALUES ('Lanche');
+INSERT INTO item_type_enum (type_name) VALUES ('Acompanhamento');
+INSERT INTO item_type_enum (type_name) VALUES ('Sobremesa');
 
 -- CADASTRANDO UM ITEM DE CADA CATEGORIA
 INSERT INTO itens (item_type_id, item_name, item_price) VALUES (1, 'Coca-cola', 5.90);
