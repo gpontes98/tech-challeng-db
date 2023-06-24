@@ -28,7 +28,7 @@ CREATE TABLE item_type_enum (
 CREATE TABLE itens (
   id INT auto_increment PRIMARY KEY,
   item_type_id INT NOT NULL,
-  FOREIGN KEY (item_type_id) REFERENCES itemTypeEnum(id),
+  FOREIGN KEY (item_type_id) REFERENCES item_type_enum(id),
   item_name VARCHAR(100) NOT NULL,
   item_price FLOAT NOT NULL
 );
