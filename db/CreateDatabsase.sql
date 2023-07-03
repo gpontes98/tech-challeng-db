@@ -12,7 +12,7 @@ CREATE TABLE customers (
 -- Esta tabela armazena informações dos pedidos, como ID, data do pedido, total do pedido e o ID do cliente associado ao pedido.
 CREATE TABLE orders (
   id INT auto_increment PRIMARY KEY,
-  order_date DATE NOT NULL,
+  order_date DATETIME NOT NULL,
   order_total FLOAT NOT NULL,
   customer_id INT,
   FOREIGN KEY (customer_id) REFERENCES customers(id)
@@ -54,7 +54,6 @@ CREATE TABLE status_queue_enum (
 -- Esta tabela registra os pedidos na fila, incluindo o ID do pedido, a posição na fila, o ID do status da fila e um ID exclusivo para o relacionamento.
 CREATE TABLE order_queue (
   id INT auto_increment PRIMARY KEY,
-  position INT NOT NULL,
   waiting_time TIME NOT NULL,
   order_id INT NOT NULL,
   FOREIGN KEY (order_id) REFERENCES orders(id),
@@ -90,7 +89,7 @@ INSERT INTO itens (item_type_id, item_name, item_description, item_img_url, item
 INSERT INTO itens (item_type_id, item_name, item_description, item_img_url, item_price) VALUES (4, 'Sorvete de Morango', 'Delicioso sorvete de morango', 'https://www.shutterstock.com/pt/image-photo/ice-cream-cone-vanilla-strawberry-flavors-645817927', 2.90);
 
 -- CADASTRANDO UM PEDIDO COM A DATA ATUAL PARA O PRIMEIRO CLIENTE
-INSERT INTO orders (order_date, order_total, customer_id) VALUES (current_date(), 35.60, 1);
+INSERT INTO orders (order_date, order_total, customer_id) VALUES (NOW(), 35.60, 1);
 
 -- CADASTRANDO UM ITEM DE CADA CATEGORIA AO PEDIDO
 INSERT INTO order_item (order_id, item_id, order_item_qtd) VALUES (1, 1, 1);
@@ -99,4 +98,4 @@ INSERT INTO order_item (order_id, item_id, order_item_qtd) VALUES (1, 3, 1);
 INSERT INTO order_item (order_id, item_id, order_item_qtd) VALUES (1, 4, 1);
 
 -- CADASTRANDO O PEDIDO NA TABELA DE FILA
-INSERT INTO order_queue (order_id, position, waiting_time, status_queue_enum_id) VALUES (1, 1, '00:05:00', 1);
+INSERT INTO order_queue (order_id, waiting_time, status_queue_enum_id) VALUES (1, '00:05:00', 1);
