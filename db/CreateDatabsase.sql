@@ -27,10 +27,12 @@ CREATE TABLE item_type_enum (
 -- Esta tabela armazena informações dos itens, como ID, ID do tipo de item, nome e preço.
 CREATE TABLE itens (
   id INT auto_increment PRIMARY KEY,
-  item_type_id INT NOT NULL,
-  FOREIGN KEY (item_type_id) REFERENCES item_type_enum(id),
   item_name VARCHAR(100) NOT NULL,
-  item_price FLOAT NOT NULL
+  item_price FLOAT NOT NULL,
+  item_description VARCHAR(256),
+  item_image VARCHAR(256),
+  item_type_id INT NOT NULL,
+  FOREIGN KEY (item_type_id) REFERENCES item_type_enum(id)
 );
 
 -- Esta tabela relaciona os itens de um pedido específico, registrando o ID do pedido, o ID do item, a quantidade do item no pedido e um ID exclusivo para o relacionamento.
@@ -52,9 +54,10 @@ CREATE TABLE status_queue_enum (
 -- Esta tabela registra os pedidos na fila, incluindo o ID do pedido, a posição na fila, o ID do status da fila e um ID exclusivo para o relacionamento.
 CREATE TABLE order_queue (
   id INT auto_increment PRIMARY KEY,
+  position INT NOT NULL,
+  waiting_time TIME NOT NULL,
   order_id INT NOT NULL,
   FOREIGN KEY (order_id) REFERENCES orders(id),
-  position INT NOT NULL,
   status_queue_enum_id INT NOT NULL,
   FOREIGN KEY (status_queue_enum_id) REFERENCES status_queue_enum(id)
 );
@@ -81,10 +84,10 @@ INSERT INTO item_type_enum (type_name) VALUES ('Acompanhamento');
 INSERT INTO item_type_enum (type_name) VALUES ('Sobremesa');
 
 -- CADASTRANDO UM ITEM DE CADA CATEGORIA
-INSERT INTO itens (item_type_id, item_name, item_price) VALUES (1, 'Coca-cola', 5.90);
-INSERT INTO itens (item_type_id, item_name, item_price) VALUES (2, 'X-Tudo', 16.90);
-INSERT INTO itens (item_type_id, item_name, item_price) VALUES (3, 'Batata-Frita', 9.90);
-INSERT INTO itens (item_type_id, item_name, item_price) VALUES (4, 'Sorvete de Morango', 2.90);
+INSERT INTO itens (item_type_id, item_name, item_description, item_image, item_price) VALUES (1, 'Coca-cola', 'Refrigerante sabor cola', 'https://www.shutterstock.com/pt/image-vector/novi-sad-serbia-january-21-2018-1008479416', 5.90);
+INSERT INTO itens (item_type_id, item_name, item_description, item_image, item_price) VALUES (2, 'X-Tudo', 'Pão, Hamburguer e salada', 'https://www.shutterstock.com/pt/image-vector/3d-rendering-delicious-cheese-burger-2168020455', 16.90);
+INSERT INTO itens (item_type_id, item_name, item_description, item_image, item_price) VALUES (3, 'Batata-Frita', 'Batata-frita 200gms', 'https://www.shutterstock.com/pt/image-photo/french-fries-510881971', 9.90);
+INSERT INTO itens (item_type_id, item_name, item_description, item_image, item_price) VALUES (4, 'Sorvete de Morango', 'Delicioso sorvete de morango', 'https://www.shutterstock.com/pt/image-photo/ice-cream-cone-vanilla-strawberry-flavors-645817927', 2.90);
 
 -- CADASTRANDO UM PEDIDO COM A DATA ATUAL PARA O PRIMEIRO CLIENTE
 INSERT INTO orders (order_date, order_total, customer_id) VALUES (current_date(), 35.60, 1);
@@ -96,4 +99,4 @@ INSERT INTO order_item (order_id, item_id, order_item_qtd) VALUES (1, 3, 1);
 INSERT INTO order_item (order_id, item_id, order_item_qtd) VALUES (1, 4, 1);
 
 -- CADASTRANDO O PEDIDO NA TABELA DE FILA
-INSERT INTO order_queue (order_id, position, status_queue_enum_id) VALUES (1, 1, 1);
+INSERT INTO order_queue (order_id, position, waiting_time, status_queue_enum_id) VALUES (1, 1, '00:05:00', 1);
